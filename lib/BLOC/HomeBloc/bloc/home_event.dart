@@ -7,6 +7,6 @@ class AddToFavEvent extends HomeEvent {}
 
 class AddToCartEvent extends HomeEvent {}
 
-class NavigateToFavList extends HomeEvent {}
+class NavigateToFavListEvent extends HomeEvent {}
 
-class NavigateToCartList extends HomeEvent {}
+class NavigateToCartListEvent extends HomeEvent {}
