@@ -28,7 +28,6 @@ class _HomeScreenState extends State<HomeScreen> {
         }
       },
       builder: (context, state) {
-        final homeBloc = BlocProvider.of<HomeBloc>(context);
 
         return Scaffold(
           appBar: AppBar(
