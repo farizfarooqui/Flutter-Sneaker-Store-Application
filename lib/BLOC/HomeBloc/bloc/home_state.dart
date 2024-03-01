@@ -9,7 +9,11 @@ final class HomeInitial extends HomeState {}
 
 class HomeLoadingState extends HomeActionState {}
 
-class HomeSuccessState extends HomeState {}
+class HomeSuccessState extends HomeState {
+  final List<SneakerDataModel> sneaker;
+
+  HomeSuccessState({required this.sneaker});
+}
 
 class HomeErrorState extends HomeState {}
 

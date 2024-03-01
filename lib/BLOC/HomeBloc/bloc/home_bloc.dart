@@ -1,11 +1,14 @@
 import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
+import 'package:sneaker_shop/DATA/data.dart';
+import 'package:sneaker_shop/MODEL/Product_model.dart';
 part 'home_event.dart';
 part 'home_state.dart';
 
 class HomeBloc extends Bloc<HomeEvent, HomeState> {
   HomeBloc() : super(HomeInitial()) {
+    on<HomeInitialEvent>(homeInitialEvent);
     on<NavigateToFavListEvent>(navigateToFavListEvent);
     on<NavigateToCartListEvent>(navigateToCartListEvent);
   }
@@ -20,5 +23,21 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
       NavigateToCartListEvent event, Emitter<HomeState> emit) {
     print('CartList');
     emit(CartPageNavigateActionState());
+  }
+
+  FutureOr<void> homeInitialEvent(
+      HomeInitialEvent event, Emitter<HomeState> emit) async {
+    emit(HomeLoadingState());
+    await Future.delayed(const Duration(seconds: 3));
+    emit(HomeSuccessState(
+        sneaker: StoreItems.storeItems
+            .map((e) => SneakerDataModel(
+                id: e['id'],
+                brand: e['brand'],
+                model: e['model'],
+                description: e['description'],
+                price: e['price'],
+                imageUrl: e['imageUrl']))
+            .toList()));
   }
 }
