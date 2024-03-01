@@ -42,6 +42,7 @@ class _HomeScreenState extends State<HomeScreen> {
             return const Scaffold(
               body: Center(child: CircularProgressIndicator()),
             );
+
           case HomeSuccessState:
             return Scaffold(
               appBar: AppBar(
@@ -66,11 +67,10 @@ class _HomeScreenState extends State<HomeScreen> {
                 child: Text(''),
               ),
             );
-          default:
-            return Container(
-              child: const Text('Error 404'),
-            );
+          case HomeErrorState:
+            return const Text('Error 404');
         }
+        return Container();
       },
     );
   }
