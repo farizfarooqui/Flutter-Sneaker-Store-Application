@@ -12,11 +12,11 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  final HomeBloc homeBloc = HomeBloc();
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<HomeBloc, HomeState>(
-      listenWhen: (previous, current) => current is HomeActionState,
-      buildWhen: (previous, current) => current is! HomeActionState,
+      bloc: homeBloc,
       listener: (context, state) {
         if (state is FavPageNavigateActionState) {
           Navigator.push(context,
@@ -27,11 +27,12 @@ class _HomeScreenState extends State<HomeScreen> {
               context, MaterialPageRoute(builder: (_) => const CardScreen()));
         }
       },
+      listenWhen: (previous, current) => current is HomeActionState,
+      buildWhen: (previous, current) => current is! HomeActionState,
       builder: (context, state) {
-
         return Scaffold(
           appBar: AppBar(
-            backgroundColor: Colors.amber,
+            backgroundColor: Colors.greenAccent,
             title: const Center(child: Text("Sneaker Store")),
             actions: [
               IconButton(
