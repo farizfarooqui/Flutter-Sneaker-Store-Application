@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:sneaker_shop/DATA/data.dart';
+import 'package:sneaker_shop/BLOC/HomeBloc/bloc/home_bloc.dart';
 import 'package:sneaker_shop/MODEL/Product_model.dart';
 
 class ProductTileCustomWidget extends StatefulWidget {
   final SneakerDataModel sneakerDataModel;
-  const ProductTileCustomWidget({super.key, required this.sneakerDataModel});
+  final HomeBloc homeBloc;
+  ProductTileCustomWidget(
+      {super.key, required this.sneakerDataModel, required this.homeBloc});
 
   @override
   State<ProductTileCustomWidget> createState() =>
@@ -14,33 +16,42 @@ class ProductTileCustomWidget extends StatefulWidget {
 class _ProductTileCustomWidgetState extends State<ProductTileCustomWidget> {
   @override
   Widget build(BuildContext context) {
-    return Card(
-      elevation: 3,
-      child: Stack(
-        children: [
-          Image.asset(
-            widget.sneakerDataModel.imageUrl,
-            fit: BoxFit.cover,
-          ),
-          Positioned(
-            top: 2,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(widget.sneakerDataModel.brand),
-                Text(widget.sneakerDataModel.model),
-              ],
+    return InkWell(
+      onTap: () {},
+      child: Card(
+        elevation: 3,
+        child: Stack(
+          children: [
+            Image.asset(
+              width: double.maxFinite,
+              height: double.maxFinite,
+              widget.sneakerDataModel.imageUrl,
+              fit: BoxFit.cover,
             ),
-          ),
-          Positioned(
-              right: 2,
-              child: IconButton(
-                  onPressed: () {}, icon: const Icon(Icons.favorite_border))),
-          Positioned(
-              left: 5,
-              bottom: 5,
-              child: Text(widget.sneakerDataModel.price.toString())),
-        ],
+            Positioned(
+              top: 2,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(widget.sneakerDataModel.brand),
+                  Text(widget.sneakerDataModel.model),
+                ],
+              ),
+            ),
+            Positioned(
+                right: 2,
+                child: IconButton(
+                    onPressed: () {
+                      widget.homeBloc.add(AddToFavEvent(
+                          clickedProduct: widget.sneakerDataModel));
+                    },
+                    icon: const Icon(Icons.favorite_border))),
+            Positioned(
+                left: 5,
+                bottom: 5,
+                child: Text(' \$ ${widget.sneakerDataModel.price.toString()}')),
+          ],
+        ),
       ),
     );
   }

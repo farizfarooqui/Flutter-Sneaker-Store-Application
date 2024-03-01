@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sneaker_shop/BLOC/HomeBloc/bloc/home_bloc.dart';
-import 'package:sneaker_shop/MODEL/Product_model.dart';
 import 'package:sneaker_shop/UI/card_screen.dart';
 import 'package:sneaker_shop/UI/favourite_screen.dart';
 import 'package:sneaker_shop/UI/home_product_tile_widget.dart';
@@ -74,7 +73,9 @@ class _HomeScreenState extends State<HomeScreen> {
               itemCount: success.sneaker.length,
               itemBuilder: (context, index) {
                 return ProductTileCustomWidget(
-                    sneakerDataModel: success.sneaker[index]);
+                  sneakerDataModel: success.sneaker[index],
+                  homeBloc: homeBloc,
+                );
               },
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 2, // Number of items in a row
@@ -84,7 +85,7 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ),
             floatingActionButton: FloatingActionButton(
-                child: Icon(Icons.message), onPressed: () {}),
+                child: const Icon(Icons.message), onPressed: () {}),
           );
         } else {
           return const Scaffold(

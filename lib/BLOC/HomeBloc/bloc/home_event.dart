@@ -9,6 +9,14 @@ class NavigateToFavListEvent extends HomeEvent {}
 
 class NavigateToCartListEvent extends HomeEvent {}
 
-class AddToFavEvent extends HomeEvent {}
+class AddToFavEvent extends HomeEvent {
+  final SneakerDataModel clickedProduct;
 
-class AddToCartEvent extends HomeEvent {}
+  AddToFavEvent({required this.clickedProduct});
+}
+
+class AddToCartEvent extends HomeEvent {
+  final SneakerDataModel clickedProduct;
+
+  AddToCartEvent({required this.clickedProduct});
+}
