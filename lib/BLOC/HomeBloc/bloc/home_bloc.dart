@@ -7,14 +7,14 @@ part 'home_event.dart';
 part 'home_state.dart';
 
 class HomeBloc extends Bloc<HomeEvent, HomeState> {
-  HomeBloc() : super(HomeInitial()) {
+  HomeBloc() : super(HomeInitialLoading()) {
     on<HomeInitialEvent>(homeInitialEvent);
     on<NavigateToFavListEvent>(navigateToFavListEvent);
     on<NavigateToCartListEvent>(navigateToCartListEvent);
   }
   FutureOr<void> homeInitialEvent(
       HomeInitialEvent event, Emitter<HomeState> emit) async {
-    emit(HomeLoadingState());
+    emit(HomeInitialLoading());
     print('loading');
     await Future.delayed(const Duration(seconds: 3));
     emit(HomeSuccessState(

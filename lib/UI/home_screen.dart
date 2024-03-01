@@ -4,6 +4,7 @@ import 'package:sneaker_shop/BLOC/HomeBloc/bloc/home_bloc.dart';
 import 'package:sneaker_shop/MODEL/Product_model.dart';
 import 'package:sneaker_shop/UI/card_screen.dart';
 import 'package:sneaker_shop/UI/favourite_screen.dart';
+import 'package:sneaker_shop/UI/home_product_tile_widget.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -37,40 +38,61 @@ class _HomeScreenState extends State<HomeScreen> {
       listenWhen: (previous, current) => current is HomeActionState,
       buildWhen: (previous, current) => current is! HomeActionState,
       builder: (context, state) {
-        switch (state.runtimeType) {
-          case HomeLoadingState:
-            return const Scaffold(
-              body: Center(child: CircularProgressIndicator()),
-            );
-
-          case HomeSuccessState:
-            return Scaffold(
-              appBar: AppBar(
-                backgroundColor: Colors.greenAccent,
-                title: const Center(child: Text("Sneaker Store")),
-                actions: [
-                  IconButton(
-                    onPressed: () {
-                      homeBloc.add(NavigateToFavListEvent());
-                    },
-                    icon: const Icon(Icons.favorite_border),
-                  ),
-                  IconButton(
-                    onPressed: () {
-                      homeBloc.add(NavigateToCartListEvent());
-                    },
-                    icon: const Icon(Icons.shopping_bag_outlined),
-                  ),
-                ],
+        if (state is HomeInitialLoading) {
+          return const Scaffold(
+            body: Center(
+                child: CircularProgressIndicator(
+              color: Colors.greenAccent,
+            )),
+          );
+        } else if (state is HomeSuccessState) {
+          final success = state;
+          return Scaffold(
+            appBar: AppBar(
+              leading: IconButton(
+                onPressed: () {},
+                icon: const CircleAvatar(child: Icon(Icons.person)),
               ),
-              body: const Center(
-                child: Text(''),
+              backgroundColor: Colors.greenAccent,
+              title: const Center(child: Text("Sneaker Store")),
+              actions: [
+                IconButton(
+                  onPressed: () {
+                    homeBloc.add(NavigateToFavListEvent());
+                  },
+                  icon: const Icon(Icons.favorite_border),
+                ),
+                IconButton(
+                  onPressed: () {
+                    homeBloc.add(NavigateToCartListEvent());
+                  },
+                  icon: const Icon(Icons.shopping_bag_outlined),
+                ),
+              ],
+            ),
+            body: GridView.builder(
+              itemCount: success.sneaker.length,
+              itemBuilder: (context, index) {
+                return ProductTileCustomWidget(
+                    sneakerDataModel: success.sneaker[index]);
+              },
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2, // Number of items in a row
+                crossAxisSpacing: 10.0, // Spacing between items horizontally
+                mainAxisSpacing: 10.0, // Spacing between items vertically
+                childAspectRatio: 0.8, // Aspect ratio of items
               ),
-            );
-          case HomeErrorState:
-            return const Text('Error 404');
+            ),
+            floatingActionButton: FloatingActionButton(
+                child: Icon(Icons.message), onPressed: () {}),
+          );
+        } else {
+          return const Scaffold(
+            body: Center(
+              child: Text('Error 404'),
+            ),
+          );
         }
-        return Container();
       },
     );
   }

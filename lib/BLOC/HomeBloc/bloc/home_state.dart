@@ -5,9 +5,7 @@ abstract class HomeState {}
 
 abstract class HomeActionState extends HomeState {}
 
-final class HomeInitial extends HomeState {}
-
-class HomeLoadingState extends HomeActionState {}
+class HomeInitialLoading extends HomeState {}
 
 class HomeSuccessState extends HomeState {
   final List<SneakerDataModel> sneaker;
