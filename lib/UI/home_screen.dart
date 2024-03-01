@@ -36,29 +36,40 @@ class _HomeScreenState extends State<HomeScreen> {
       listenWhen: (previous, current) => current is HomeActionState,
       buildWhen: (previous, current) => current is! HomeActionState,
       builder: (context, state) {
-        return Scaffold(
-          appBar: AppBar(
-            backgroundColor: Colors.greenAccent,
-            title: const Center(child: Text("Sneaker Store")),
-            actions: [
-              IconButton(
-                onPressed: () {
-                  homeBloc.add(NavigateToFavListEvent());
-                },
-                icon: const Icon(Icons.favorite_border),
+        switch (state.runtimeType) {
+          case HomeLoadingState:
+            return const Scaffold(
+              body: Center(
+                child: CircularProgressIndicator(),
               ),
-              IconButton(
-                onPressed: () {
-                  homeBloc.add(NavigateToCartListEvent());
-                },
-                icon: const Icon(Icons.shopping_bag_outlined),
+            );
+          case HomeSuccessState:
+            return Scaffold(
+              appBar: AppBar(
+                backgroundColor: Colors.greenAccent,
+                title: const Center(child: Text("Sneaker Store")),
+                actions: [
+                  IconButton(
+                    onPressed: () {
+                      homeBloc.add(NavigateToFavListEvent());
+                    },
+                    icon: const Icon(Icons.favorite_border),
+                  ),
+                  IconButton(
+                    onPressed: () {
+                      homeBloc.add(NavigateToCartListEvent());
+                    },
+                    icon: const Icon(Icons.shopping_bag_outlined),
+                  ),
+                ],
               ),
-            ],
-          ),
-          body: const Center(
-            child: Text('Hello'),
-          ),
-        );
+              body: const Center(
+                child: Text('Hello'),
+              ),
+            );
+          default:
+            return Container();
+        }
       },
     );
   }
