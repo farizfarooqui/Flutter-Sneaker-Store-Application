@@ -12,22 +12,10 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     on<NavigateToFavListEvent>(navigateToFavListEvent);
     on<NavigateToCartListEvent>(navigateToCartListEvent);
   }
-
-  FutureOr<void> navigateToFavListEvent(
-      NavigateToFavListEvent event, Emitter<HomeState> emit) {
-    print("FavList");
-    emit(FavPageNavigateActionState());
-  }
-
-  FutureOr<void> navigateToCartListEvent(
-      NavigateToCartListEvent event, Emitter<HomeState> emit) {
-    print('CartList');
-    emit(CartPageNavigateActionState());
-  }
-
   FutureOr<void> homeInitialEvent(
       HomeInitialEvent event, Emitter<HomeState> emit) async {
     emit(HomeLoadingState());
+    print('loading');
     await Future.delayed(const Duration(seconds: 3));
     emit(HomeSuccessState(
         sneaker: StoreItems.storeItems
@@ -39,5 +27,18 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
                 price: e['price'],
                 imageUrl: e['imageUrl']))
             .toList()));
+    print('Success');
+  }
+
+  FutureOr<void> navigateToFavListEvent(
+      NavigateToFavListEvent event, Emitter<HomeState> emit) {
+    print("FavList");
+    emit(FavPageNavigateActionState());
+  }
+
+  FutureOr<void> navigateToCartListEvent(
+      NavigateToCartListEvent event, Emitter<HomeState> emit) {
+    print('CartList');
+    emit(CartPageNavigateActionState());
   }
 }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sneaker_shop/BLOC/HomeBloc/bloc/home_bloc.dart';
+import 'package:sneaker_shop/MODEL/Product_model.dart';
 import 'package:sneaker_shop/UI/card_screen.dart';
 import 'package:sneaker_shop/UI/favourite_screen.dart';
 
@@ -39,9 +40,7 @@ class _HomeScreenState extends State<HomeScreen> {
         switch (state.runtimeType) {
           case HomeLoadingState:
             return const Scaffold(
-              body: Center(
-                child: CircularProgressIndicator(),
-              ),
+              body: Center(child: CircularProgressIndicator()),
             );
           case HomeSuccessState:
             return Scaffold(
@@ -64,11 +63,13 @@ class _HomeScreenState extends State<HomeScreen> {
                 ],
               ),
               body: const Center(
-                child: Text('Hello'),
+                child: Text(''),
               ),
             );
           default:
-            return Container();
+            return Container(
+              child: const Text('Error 404'),
+            );
         }
       },
     );
