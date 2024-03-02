@@ -1,6 +1,10 @@
 part of 'favourite_bloc.dart';
 
 @immutable
-sealed class FavouriteState {}
+abstract class FavouriteState {}
 
-final class FavouriteInitial extends FavouriteState {}
+class FavouriteActionState extends FavouriteState {}
+
+// class FavouriteInitial extends FavouriteState {}
+
+class FavouriteSucessState extends FavouriteState {}

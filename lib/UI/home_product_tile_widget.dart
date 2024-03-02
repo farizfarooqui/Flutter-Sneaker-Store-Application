@@ -47,6 +47,15 @@ class _ProductTileCustomWidgetState extends State<ProductTileCustomWidget> {
                     },
                     icon: const Icon(Icons.favorite_border))),
             Positioned(
+                bottom: 2,
+                right: 2,
+                child: IconButton(
+                    onPressed: () {
+                      widget.homeBloc.add(AddToCartEvent(
+                          clickedProduct: widget.sneakerDataModel));
+                    },
+                    icon: const Icon(Icons.shopping_bag_outlined))),
+            Positioned(
                 left: 5,
                 bottom: 5,
                 child: Text(' \$ ${widget.sneakerDataModel.price.toString()}')),

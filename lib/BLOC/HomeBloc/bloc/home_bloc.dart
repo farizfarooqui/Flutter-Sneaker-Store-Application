@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
+import 'package:sneaker_shop/DATA/cart_list.dart';
 import 'package:sneaker_shop/DATA/data.dart';
 import 'package:sneaker_shop/DATA/favourites_list.dart';
 import 'package:sneaker_shop/MODEL/Product_model.dart';
@@ -13,6 +14,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     on<NavigateToFavListEvent>(navigateToFavListEvent);
     on<NavigateToCartListEvent>(navigateToCartListEvent);
     on<AddToFavEvent>(addToFavEvent);
+    on<AddToCartEvent>(addToCartEvent);
   }
   FutureOr<void> homeInitialEvent(
       HomeInitialEvent event, Emitter<HomeState> emit) async {
@@ -48,5 +50,10 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     print('add to fav list');
     favouriteList.add(event.clickedProduct);
     print(favouriteList);
+  }
+
+  FutureOr<void> addToCartEvent(AddToCartEvent event, Emitter<HomeState> emit) {
+    print('Addedd');
+    cartList.add(event.clickedProduct);
   }
 }
