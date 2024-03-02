@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:io';
 
 import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
@@ -16,11 +17,13 @@ class CartBloc extends Bloc<CartEvent, CartState> {
   FutureOr<void> cartInitialEvent(
       CartInitialEvent event, Emitter<CartState> emit) async {
     emit(CardLoadingState());
-    await Future.delayed(const Duration(seconds: 2));
+    await Future.delayed(const Duration(seconds: 1));
     if (cartList.isEmpty) {
-      emit(CardEmptyState());
+      print('empty cart page');
+      return emit(CardEmptyState());
     } else {
-      emit(CardSuccessState());
+      print('success cart page');
+      emit(CardSuccessState(cartItems: cartList));
     }
   }
 }
