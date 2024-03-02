@@ -56,6 +56,12 @@ class _CardScreenState extends State<CardScreen> {
                             Text(cardItem.brand),
                             Text(cardItem.model),
                             Text(cardItem.description),
+                            IconButton(
+                                onPressed: () {
+                                  cartBloc.add(RemoveFromCartListEvent(
+                                      sneakerDataModel: cardItem));
+                                },
+                                icon: const Icon(Icons.minimize))
                           ],
                         )
                       ]),

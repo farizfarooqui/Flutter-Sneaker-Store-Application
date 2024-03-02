@@ -12,6 +12,7 @@ part 'cart_state.dart';
 class CartBloc extends Bloc<CartEvent, CartState> {
   CartBloc() : super(CartInitialState()) {
     on<CartInitialEvent>(cartInitialEvent);
+    on<RemoveFromCartListEvent>(removeFromCartListEvent);
   }
 
   FutureOr<void> cartInitialEvent(
@@ -23,6 +24,16 @@ class CartBloc extends Bloc<CartEvent, CartState> {
       return emit(CardEmptyState());
     } else {
       print('success cart page');
+      emit(CardSuccessState(cartItems: cartList));
+    }
+  }
+
+  FutureOr<void> removeFromCartListEvent(
+      RemoveFromCartListEvent event, Emitter<CartState> emit) {
+    cartList.remove(event.sneakerDataModel);
+    if (cartList.isEmpty) {
+      emit(CardEmptyState());
+    } else {
       emit(CardSuccessState(cartItems: cartList));
     }
   }
