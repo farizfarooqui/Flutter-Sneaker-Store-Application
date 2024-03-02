@@ -5,7 +5,7 @@ abstract class CartState {}
 
 abstract class CartActionState {}
 
-class CartInitial extends CartState {}
+class CartInitialState extends CartState {}
 
 class CardLoadingState extends CartState {}
 

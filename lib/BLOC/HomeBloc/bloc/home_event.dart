@@ -18,5 +18,5 @@ class AddToFavEvent extends HomeEvent {
 class AddToCartEvent extends HomeEvent {
   final SneakerDataModel clickedProduct;
 
-  AddToCartEvent({required this.clickedProduct});
+  AddToCartEvent({required this.clickedProduct}); 
 }
