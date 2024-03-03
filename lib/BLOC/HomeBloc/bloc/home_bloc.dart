@@ -52,11 +52,11 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
         favouriteList.any((item) => item.id == event.clickedProduct.id);
     if (isFav == true) {
       favouriteList.remove(event.clickedProduct);
-      emit(FavIconHomeBuildState());
+      // emit(FavIconHomeBuildState());
       print(favouriteList);
     } else {
       favouriteList.add(event.clickedProduct);
-      emit(FavRedIconHomeBuildState());
+      // emit(FavRedIconHomeBuildState());
       print(favouriteList);
     }
   }

@@ -46,31 +46,14 @@ class _ProductTileCustomWidgetState extends State<ProductTileCustomWidget> {
                     onPressed: () {
                       widget.homeBloc.add(AddToFavEvent(
                           clickedProduct: widget.sneakerDataModel));
+                      setState(() {});
                     },
-                    icon: BlocConsumer<HomeBloc, HomeState>(
-                      bloc: widget.homeBloc,
-                      listenWhen: (previous, current) =>
-                          current is HomeActionState,
-                      buildWhen: (previous, current) =>
-                          current is! HomeActionState,
-                      listener: (context, state) {},
-                      builder: (context, state) {
-                        if (state is FavIconHomeBuildState) {
-                          return const Icon(
-                            Icons.favorite_rounded,
-                            color: Colors.grey,
-                          );
-                        } else if (state is FavRedIconHomeBuildState) {
-                          return const Icon(
-                            Icons.favorite_rounded,
-                            color: Colors.red,
-                          );
-                        }
-                        return const Icon(
-                          Icons.favorite_rounded,
-                          color: Colors.grey,
-                        );
-                      },
+                    icon: Icon(
+                      Icons.favorite,
+                      color: favouriteList.any(
+                              (item) => item.id == widget.sneakerDataModel.id)
+                          ? Colors.red
+                          : Colors.grey,
                     ))),
             Positioned(
                 bottom: 2,
@@ -93,25 +76,26 @@ class _ProductTileCustomWidgetState extends State<ProductTileCustomWidget> {
 }
 // BlocConsumer<HomeBloc, HomeState>(
 //                       bloc: widget.homeBloc,
-                      // listenWhen: (previous, current) =>
-                      //     current is HomeActionState,
-                      // buildWhen: (previous, current) =>
-                      //     current is! HomeActionState,
-                      // listener: (context, state) {},
+//                       listenWhen: (previous, current) =>
+//                           current is HomeActionState,
+//                       buildWhen: (previous, current) =>
+//                           current is! HomeActionState,
+//                       listener: (context, state) {},
 //                       builder: (context, state) {
 //                         if (state is FavIconHomeBuildState) {
-//                           return Icon(
-//                             Icons.favorite,
-//                             color: favouriteList.any((item) =>
-//                                     item.id == widget.sneakerDataModel.id)
-//                                 ? Colors.red
-//                                 : Colors.grey,
-//                           );
-//                         } else {
 //                           return const Icon(
-//                             Icons.favorite,
+//                             Icons.favorite_rounded,
 //                             color: Colors.grey,
 //                           );
+//                         } else if (state is FavRedIconHomeBuildState) {
+//                           return const Icon(
+//                             Icons.favorite_rounded,
+//                             color: Colors.red,
+//                           );
 //                         }
+//                         return const Icon(
+//                           Icons.favorite_rounded,
+//                           color: Colors.grey,
+//                         );
 //                       },
 //                     )
