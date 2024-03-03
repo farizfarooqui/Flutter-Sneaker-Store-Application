@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sneaker_shop/BLOC/HomeBloc/bloc/home_bloc.dart';
 import 'package:sneaker_shop/DATA/favourites_list.dart';
 import 'package:sneaker_shop/MODEL/Product_model.dart';
@@ -74,28 +73,3 @@ class _ProductTileCustomWidgetState extends State<ProductTileCustomWidget> {
     );
   }
 }
-// BlocConsumer<HomeBloc, HomeState>(
-//                       bloc: widget.homeBloc,
-//                       listenWhen: (previous, current) =>
-//                           current is HomeActionState,
-//                       buildWhen: (previous, current) =>
-//                           current is! HomeActionState,
-//                       listener: (context, state) {},
-//                       builder: (context, state) {
-//                         if (state is FavIconHomeBuildState) {
-//                           return const Icon(
-//                             Icons.favorite_rounded,
-//                             color: Colors.grey,
-//                           );
-//                         } else if (state is FavRedIconHomeBuildState) {
-//                           return const Icon(
-//                             Icons.favorite_rounded,
-//                             color: Colors.red,
-//                           );
-//                         }
-//                         return const Icon(
-//                           Icons.favorite_rounded,
-//                           color: Colors.grey,
-//                         );
-//                       },
-//                     )
