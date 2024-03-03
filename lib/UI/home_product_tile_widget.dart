@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sneaker_shop/BLOC/HomeBloc/bloc/home_bloc.dart';
+import 'package:sneaker_shop/DATA/favourites_list.dart';
 import 'package:sneaker_shop/MODEL/Product_model.dart';
 
 class ProductTileCustomWidget extends StatefulWidget {
@@ -44,8 +45,15 @@ class _ProductTileCustomWidgetState extends State<ProductTileCustomWidget> {
                     onPressed: () {
                       widget.homeBloc.add(AddToFavEvent(
                           clickedProduct: widget.sneakerDataModel));
+                      setState(() {});
                     },
-                    icon: const Icon(Icons.favorite_border))),
+                    icon: Icon(
+                      Icons.favorite,
+                      color: favouriteList.any(
+                              (item) => item.id == widget.sneakerDataModel.id)
+                          ? Colors.red
+                          : Colors.grey,
+                    ))),
             Positioned(
                 bottom: 2,
                 right: 2,

@@ -47,9 +47,15 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
   }
 
   FutureOr<void> addToFavEvent(AddToFavEvent event, Emitter<HomeState> emit) {
-    print('add to fav list');
-    favouriteList.add(event.clickedProduct);
-    print(favouriteList);
+    bool isFav =
+        favouriteList.any((item) => item.id == event.clickedProduct.id);
+    if (isFav == true) {
+      favouriteList.remove(event.clickedProduct);
+      print(favouriteList);
+    } else {
+      favouriteList.add(event.clickedProduct);
+      print(favouriteList);
+    }
   }
 
   FutureOr<void> addToCartEvent(AddToCartEvent event, Emitter<HomeState> emit) {
