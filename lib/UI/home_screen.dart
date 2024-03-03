@@ -88,9 +88,9 @@ class _HomeScreenState extends State<HomeScreen> {
                 child: const Icon(Icons.message), onPressed: () {}),
           );
         } else {
-          return const Scaffold(
+          return Scaffold(
             body: Center(
-              child: Text('Error 404'),
+              child: Text(homeBloc.state.toString()),
             ),
           );
         }

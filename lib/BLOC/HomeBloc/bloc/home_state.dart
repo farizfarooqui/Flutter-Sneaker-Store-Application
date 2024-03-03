@@ -15,6 +15,10 @@ class HomeSuccessState extends HomeState {
 
 class HomeErrorState extends HomeState {}
 
+class FavIconHomeBuildState extends HomeState {}
+
+class FavRedIconHomeBuildState extends HomeState {}
+
 class FavPageNavigateActionState extends HomeActionState {}
 
 class CartPageNavigateActionState extends HomeActionState {}
