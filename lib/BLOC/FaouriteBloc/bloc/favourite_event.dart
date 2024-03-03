@@ -5,4 +5,8 @@ abstract class FavouriteEvent {}
 
 class FavouriteInitialEvent extends FavouriteEvent {}
 
-class RemoveFromFavListEvent extends FavouriteEvent {}
+class RemoveFromFavListEvent extends FavouriteEvent {
+  final SneakerDataModel sneakerDataModel;
+
+  RemoveFromFavListEvent({required this.sneakerDataModel});
+}

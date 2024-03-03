@@ -51,7 +51,10 @@ class _FavouriteScreenState extends State<FavouriteScreen> {
                           Text(cardItem.model),
                           Text(cardItem.description),
                           IconButton(
-                              onPressed: () {},
+                              onPressed: () {
+                                favouriteBloc.add(RemoveFromFavListEvent(
+                                    sneakerDataModel: favouriteList[index]));
+                              },
                               icon: const Icon(Icons.minimize))
                         ],
                       )
