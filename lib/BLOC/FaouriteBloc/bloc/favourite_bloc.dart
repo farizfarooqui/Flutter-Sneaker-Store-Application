@@ -26,10 +26,10 @@ class FavouriteBloc extends Bloc<FavouriteEvent, FavouriteState> {
   }
 
   FutureOr<void> removeFromFavListEvent(
-      RemoveFromFavListEvent event, Emitter<FavouriteState> emit) {
-    favouriteList.remove(event.sneakerDataModel);
-    if (favouriteList.isEmpty) {
-      emit(FavEmptyState());
+      RemoveFromFavListEvent event, Emitter<FavouriteState> emit)async {
+     favouriteList.remove(event.sneakerDataModel);
+     if ( favouriteList.isEmpty) {
+       emit(FavEmptyState());
     } else {
       emit(FavouriteSucessState());
     }

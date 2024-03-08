@@ -6,6 +6,7 @@ class StoreItems {
       "model": "Air Max 1",
       "description": "Classic Nike sneaker with Air cushioning.",
       "price": 129.99,
+      "isFav": false,
       "imageUrl": "assets/images/1.png"
     },
     {
@@ -14,6 +15,7 @@ class StoreItems {
       "model": "Superstar",
       "description": "Iconic Adidas Superstar sneaker.",
       "price": 89.99,
+      "isFav": false,
       "imageUrl": "assets/images/2.jpg"
     },
     {
@@ -22,6 +24,7 @@ class StoreItems {
       "model": "Air Jordan 1",
       "description": "Legendary Air Jordan 1 basketball sneaker.",
       "price": 159.99,
+      "isFav": false,
       "imageUrl": "assets/images/3.jpg"
     },
     {
@@ -30,6 +33,7 @@ class StoreItems {
       "model": "Suede Classic",
       "description": "Timeless Puma Suede Classic sneaker.",
       "price": 79.99,
+      "isFav": false,
       "imageUrl": "assets/images/4.jpg"
     },
     {
@@ -38,6 +42,7 @@ class StoreItems {
       "model": "Classic Leather",
       "description": "Reebok Classic Leather casual sneaker.",
       "price": 94.99,
+      "isFav": false,
       "imageUrl": "assets/images/5.jpg"
     },
     {
@@ -46,6 +51,7 @@ class StoreItems {
       "model": "Chuck Taylor All Star",
       "description": "Iconic Converse Chuck Taylor All Star sneaker.",
       "price": 54.99,
+      "isFav": false,
       "imageUrl": "assets/images/6.jpg"
     },
     {
@@ -54,6 +60,7 @@ class StoreItems {
       "model": "Old Skool",
       "description": "Classic Vans Old Skool skate shoe.",
       "price": 69.99,
+      "isFav": false,
       "imageUrl": "assets/images/7.png"
     },
     {
@@ -62,6 +69,7 @@ class StoreItems {
       "model": "990v5",
       "description": "New Balance 990v5 running shoe.",
       "price": 174.99,
+      "isFav": false,
       "imageUrl": "assets/images/8.jpg"
     },
     {
@@ -70,6 +78,7 @@ class StoreItems {
       "model": "Curry 7",
       "description": "Under Armour Curry 7 basketball shoe.",
       "price": 129.99,
+      "isFav": false,
       "imageUrl": "assets/images/9.jpg"
     },
     {
@@ -78,6 +87,7 @@ class StoreItems {
       "model": "GEL-Kayano 27",
       "description": "ASICS GEL-Kayano 27 running shoe.",
       "price": 149.99,
+      "isFav": false,
       "imageUrl": "assets/images/10.jpg"
     },
     {
@@ -86,6 +96,7 @@ class StoreItems {
       "model": "Jazz Original",
       "description": "Saucony Jazz Original retro sneaker.",
       "price": 89.99,
+      "isFav": false,
       "imageUrl": "assets/images/11.jpg"
     },
     {
@@ -94,6 +105,7 @@ class StoreItems {
       "model": "Disruptor II",
       "description": "Fila Disruptor II chunky sneaker.",
       "price": 79.99,
+      "isFav": false,
       "imageUrl": "assets/images/12.jpg"
     }
   ];

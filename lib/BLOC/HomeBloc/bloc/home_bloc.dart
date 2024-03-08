@@ -29,6 +29,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
                 model: e['model'],
                 description: e['description'],
                 price: e['price'],
+                isFav: e['isFav'],
                 imageUrl: e['imageUrl']))
             .toList()));
     print('Success');
